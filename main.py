@@ -29,14 +29,10 @@ def index_weather():
 
     cpu_tempc = float(array2[0])
     cpu_tempc = float("{0:.2f}".format(cpu_tempc))
-    cpu_tempf = float(array2[0]) * 9.0 / 5.0 + 32.0
-    cpu_tempf = float("{0:.2f}".format(cpu_tempf))
 
     temp_calibrated_c = temp_c - ((cpu_tempc - temp_c)/5.466)
     temp_calibrated_c = float("{0:.2f}".format(temp_calibrated_c))
     humidity_data = float("{0:.2f}".format(humidity_data))
-    pressure_in = 0.0295301*(pressure_mb)
-    pressure_in = float("{0:.2f}".format(pressure_in))
     pressure_mb = float("{0:.2f}".format(pressure_mb))
 
     return jsonify(info_temperature=temp_calibrated_c, info_pressure=pressure_mb, info_humidity=humidity_data, about_curdate=int(time.time()), about_measure_location="todo with gps")
